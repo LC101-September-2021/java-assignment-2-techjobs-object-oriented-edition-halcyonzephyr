@@ -39,15 +39,12 @@ public class Job {
         return getId() == job.getId();
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
-    }
 
     @Override
     public String toString() {
 
         String dataNotAvailable = "Data not available";
+        String jobDoesNotExist = "OOPS! This job does not seem to exist.";
         String nameValue;
 
         try {
@@ -58,10 +55,10 @@ public class Job {
                     (positionType.getValue() == null || positionType.getValue().isEmpty()) &&
                     (coreCompetency.getValue() == null || coreCompetency.getValue().isEmpty())
             ) {
-                return "OOPS! This job does not seem to exist.";
+                return jobDoesNotExist;
             }
         } catch (NullPointerException npe) {
-            return "OOPS! This job does not seem to exist.";
+            return jobDoesNotExist;
         }
 
         if (name == null || name.isEmpty()) {

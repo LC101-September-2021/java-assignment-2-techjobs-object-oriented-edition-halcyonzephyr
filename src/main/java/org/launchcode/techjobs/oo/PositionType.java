@@ -16,9 +16,4 @@ public class PositionType extends JobField {
         return getId() == position.getId();
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
-    }
-
 }

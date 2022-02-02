@@ -1,5 +1,7 @@
 package org.launchcode.techjobs.oo;
 
+import java.util.Objects;
+
 public abstract class JobField {
     private int id;
     private static int nextId = 1;
@@ -19,16 +21,15 @@ public abstract class JobField {
         return value;
     }
 
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
     public int getId() {
         return id;
     }
 
-    public String getValue() {
-        if (value == null || value.isEmpty()) {
-            return "Data not available";
-        }
-        return value;
-    }
+    public String getValue() { return value; }
 
     public void setValue(String value) {
         this.value = value;

@@ -44,7 +44,52 @@ public class Job {
         return Objects.hash(getId());
     }
 
+    @Override
+    public String toString() {
 
+        String dataNotAvailable = "Data not available";
+        String nameValue;
+
+        try {
+            if (
+                    (name == null || name.isEmpty()) &&
+                    (employer.getValue() == null || employer.getValue().isEmpty()) &&
+                    (location.getValue() == null || location.getValue().isEmpty()) &&
+                    (positionType.getValue() == null || positionType.getValue().isEmpty()) &&
+                    (coreCompetency.getValue() == null || coreCompetency.getValue().isEmpty())
+            ) {
+                return "OOPS! This job does not seem to exist.";
+            }
+        } catch (NullPointerException npe) {
+            return "OOPS! This job does not seem to exist.";
+        }
+
+        if (name == null || name.isEmpty()) {
+            nameValue = dataNotAvailable;
+        } else {
+            nameValue = name;
+        }
+
+        if (employer.getValue() == null || employer.getValue().isEmpty()) {
+            employer.setValue(dataNotAvailable);
+        }
+        if (location.getValue() == null || location.getValue().isEmpty()) {
+            location.setValue(dataNotAvailable);
+        }
+        if (positionType.getValue() == null || positionType.getValue().isEmpty()) {
+            positionType.setValue(dataNotAvailable);
+        }
+        if (coreCompetency.getValue() == null || coreCompetency.getValue().isEmpty()) {
+            coreCompetency.setValue(dataNotAvailable);
+        }
+
+        return "\nID: " + id +
+                "\nName: " + nameValue +
+                "\nEmployer: " + employer +
+                "\nLocation: " + location +
+                "\nPosition Type: " + positionType +
+                "\nCore Competency: " + coreCompetency + "\n";
+    }
     // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
     //  and id.
     public int getId() {

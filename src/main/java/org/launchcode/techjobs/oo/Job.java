@@ -17,7 +17,7 @@ public class Job {
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field.
     public Job() {
-        id = nextId;
+        this.id = nextId;
         nextId++;
     }
 
@@ -39,6 +39,10 @@ public class Job {
         return getId() == job.getId();
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
 
     @Override
     public String toString() {
